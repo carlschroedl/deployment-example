@@ -20,8 +20,8 @@ template = {
 }
 
 template_str = json.dumps(template)
-region = os.environ.get('AWS_REGION')
-role_arn = 'arn:aws:iam::{}:role/cf-deployment-service'.format(region)
+account_id = boto3.client('sts').get_caller_identity().get('Account')
+role_arn = 'arn:aws:iam::{}:role/cf-deployment-service'.format(account_id)
 response = client.create_stack(
     StackName='throwaway-stack-{}'.format(stack_id),
     TemplateBody=template_str,
