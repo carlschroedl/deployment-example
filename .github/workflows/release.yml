@@ -26,9 +26,10 @@ jobs:
         run: |
           echo "FRIENDLY_REF=${GITHUB_REF##*/}" >> $GITHUB_ENV
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: svenstaro/upload-release-action@v2
         with:
-          files: example.zip
-          tag_name: ${{ env.FRIENDLY_REF }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: $ {{ secrets.GITHUB_TOKEN }}
+          file: example.zip
+          asset_name: example.zip
+          tag: ${{ github.ref }}
+          overwrite: true
