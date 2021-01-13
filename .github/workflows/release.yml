@@ -24,6 +24,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: latest
           tags:  true
+          force: true
       - name: Release
         uses: svenstaro/upload-release-action@v2
         with:
