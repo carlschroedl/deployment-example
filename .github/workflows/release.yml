@@ -16,6 +16,14 @@ jobs:
       - name: Build project 
         run: |
           zip example.zip *
+      - name: tag
+        run: git tag latest    
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: latest
+          tags:  true
       - name: Release
         uses: svenstaro/upload-release-action@v2
         with:
