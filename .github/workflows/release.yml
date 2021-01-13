@@ -24,7 +24,7 @@ jobs:
       - name: export friendly ref
         id: export_friendly_ref
         run: |
-          echo "::set-env name=FRIENDLY_REF::${GITHUB_REF##*/}"
+          echo "FRIENDLY_REF=${GITHUB_REF##*/}" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
