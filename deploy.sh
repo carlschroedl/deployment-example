@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "HELLO DEPLOYMENT"
+echo "HELLO AGAIN DEPLOYMENT"
